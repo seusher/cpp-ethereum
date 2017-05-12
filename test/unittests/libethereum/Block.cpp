@@ -50,6 +50,9 @@ BOOST_AUTO_TEST_CASE(bStructures)
 
 BOOST_AUTO_TEST_CASE(bStates)
 {
+	// this test does full Ethash mining
+	if (!dev::test::Options::get().quadratic)
+		return;
 	try
 	{
 		TestBlockChain testBlockchain(TestBlockChain::defaultGenesisBlock());
@@ -107,10 +110,6 @@ BOOST_AUTO_TEST_CASE(bStates)
 	catch (std::exception const& _e)
 	{
 		BOOST_ERROR("Failed test with Exception: " << _e.what());
-	}
-	catch(...)
-	{
-		BOOST_ERROR("Exception thrown when trying to mine or import a block!");
 	}
 }
 
@@ -244,10 +243,6 @@ BOOST_AUTO_TEST_CASE(bCopyOperator)
 	catch (std::exception const& _e)
 	{
 		BOOST_ERROR("Failed test with Exception: " << _e.what());
-	}
-	catch(...)
-	{
-		BOOST_ERROR("Exception thrown when trying to mine or import a block!");
 	}
 }
 
