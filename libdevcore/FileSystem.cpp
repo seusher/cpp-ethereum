@@ -83,7 +83,7 @@ string dev::getDefaultDataDir(string _prefix)
 #if defined(_WIN32)
 	_prefix[0] = toupper(_prefix[0]);
 	char path[1024] = "";
-	if (SHGetSpecialFolderPathA(NULL, path, CSIDL_APPDATA, true))
+	if (SHGetSpecialFolderPathA(NULL, path, CSIDL_LOCAL_APPDATA, true))
 		return (boost::filesystem::path(path) / _prefix).string();
 	else
 	{
